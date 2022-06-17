@@ -1,6 +1,6 @@
 import * as http from 'http'
-import { handleGet } from './handleGet'
-import { handlePost } from './handlePost'
+import { handleGet } from '../get/handleGet'
+import { handlePost } from '../post/handlePost'
 
 const host = 'localhost'
 const port = 8000

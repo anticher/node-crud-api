@@ -1,5 +1,5 @@
 import { User } from '../models/user.model'
-import { users } from './testUsers'
+import { users } from '../server/usersData'
 import { v4 as uuidv4 } from 'uuid'
 
 export const postUser = (payload: string) => {

@@ -1,5 +1,5 @@
 import { ResultWithStatus } from '../models/resultWithStatus.model'
-import { users } from './testUsers'
+import { users } from '../server/usersData'
 import { validate as uuidValidate } from 'uuid'
 
 export const getUserWithStatus = (requestUrl?: string): ResultWithStatus => {
