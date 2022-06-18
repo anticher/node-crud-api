@@ -13,7 +13,7 @@ describe('scenario 1', () => {
     let res = await request(app)
       .post('/api/users')
       .send({ 'username': 'Ben', 'age': 23, 'hobbies': ['skating'] })
-    expect(res.status).toBe(200)
+    expect(res.status).toBe(201)
     expect(res.body).toHaveProperty('username', 'Ben')
     expect(res.body).toHaveProperty('age', 23)
     expect(res.body).toHaveProperty('hobbies', ['skating'])

@@ -5,9 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "test": "jest",
-    "start:dev": "source .env; npx nodemon src/index.ts",
+    "start:dev": "npx nodemon src/index.ts",
     "start:prod": "npx webpack && node dist/bundle.js",
-    "start:multi": "source .env; npx nodemon src/cluster/main.ts"
+    "start:multi": "npx nodemon src/cluster/main.ts"
   },
   "repository": {
     "type": "git",

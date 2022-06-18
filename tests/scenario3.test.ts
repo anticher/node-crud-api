@@ -14,7 +14,7 @@ describe('scenario 1', () => {
     let res = await request(app)
       .post('/api/users')
       .send({ 'username': 'John', 'age': 28, 'hobbies': ['running'] })
-    expect(res.status).toBe(200)
+    expect(res.status).toBe(201)
     expect(res.body).toHaveProperty('username', 'John')
     expect(res.body).toHaveProperty('age', 28)
     expect(res.body).toHaveProperty('hobbies', ['running'])
@@ -24,11 +24,11 @@ describe('scenario 1', () => {
   it('A new object (Bob) is created by a POST api/users request (a response containing newly created record is expected)', async () => {
     let res = await request(app)
       .post('/api/users')
-      .send({ 'username': 'Bob', 'age': 24, 'hobbies': ['fishing, jumping'] })
-    expect(res.status).toBe(200)
+      .send({ 'username': 'Bob', 'age': 24, 'hobbies': ['fishing', 'jumping'] })
+    expect(res.status).toBe(201)
     expect(res.body).toHaveProperty('username', 'Bob')
     expect(res.body).toHaveProperty('age', 24)
-    expect(res.body).toHaveProperty('hobbies', ['fishing, jumping'])
+    expect(res.body).toHaveProperty('hobbies', ['fishing', 'jumping'])
     expect(res.body).toHaveProperty('id')
     newUser2Id = res.body.id
   })
@@ -50,6 +50,6 @@ describe('scenario 1', () => {
   it('Get all records with a GET api/users request (Bob is expected)', async () => {
     const res = await request(app).get('/api/users')
     expect(res.status).toBe(200)
-    expect(res.body).toEqual([{ 'id': newUser2Id, 'username': 'Bob', 'age': 24, 'hobbies': ['fishing, jumping'] }])
+    expect(res.body).toEqual([{ 'id': newUser2Id, 'username': 'Bob', 'age': 24, 'hobbies': ['fishing', 'jumping'] }])
   })
 })

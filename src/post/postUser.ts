@@ -15,7 +15,7 @@ export const postUser = (payload: string): ResultWithStatus => {
         }
         const newUser: User = { id: uuidv4(), username: userData.username, age: userData.age, hobbies: userData.hobbies }
         users.push(newUser)
-        return { status: 200, result: newUser }
+        return { status: 201, result: newUser }
     }
     catch {
         return { status: 500, result: 'server error'}
