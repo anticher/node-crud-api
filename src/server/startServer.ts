@@ -11,6 +11,7 @@ export const startServer = () => {
     const host = 'localhost'
     const requestListener:
         http.RequestListener = (req: http.IncomingMessage, res: http.ServerResponse) => {
+            res.setHeader('Content-Type', 'application/json')
             if (req.url?.startsWith('/api/users')) {
                 switch (true) {
                     case req.method === 'GET':
@@ -27,12 +28,12 @@ export const startServer = () => {
                         break
                     default:
                         res.writeHead(501)
-                        res.end(JSON.stringify({ error: 'server does not support method ' +  req.method}))
+                        res.end(JSON.stringify('server does not support method ' + req.method))
                         break
                 }
             } else {
                 res.writeHead(404)
-                res.end(JSON.stringify({ error: 'wrong path' }))
+                res.end(JSON.stringify('wrong path'))
             }
         }
 
@@ -41,4 +42,6 @@ export const startServer = () => {
     server.listen(port, host, () => {
         console.log(`Server is running on http://${host}:${port}`)
     })
+
+    return server
 }

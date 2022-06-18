@@ -13,13 +13,13 @@ export const handlePost = (request: http.IncomingMessage, response: http.ServerR
             request.on('end', () => {
                 resultWithStatus = postUser(body)
                 response.writeHead(resultWithStatus.status)
-                response.end(resultWithStatus.result)
+                response.end(JSON.stringify(resultWithStatus.result))
             })
             break
         }
         default:
             response.writeHead(404)
-            response.end(JSON.stringify({ error: 'post error --- TEST' }))
+            response.end(JSON.stringify('wrong path'))
             break
     }
 }

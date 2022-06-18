@@ -13,7 +13,7 @@ export const handlePut = (request: http.IncomingMessage, response: http.ServerRe
                 let resultWithStatus: ResultWithStatus
                 resultWithStatus = putUser(body, request.url)
                 response.writeHead(resultWithStatus.status)
-                response.end(resultWithStatus.result)
+                response.end(JSON.stringify(resultWithStatus.result))
             })
             break
         }

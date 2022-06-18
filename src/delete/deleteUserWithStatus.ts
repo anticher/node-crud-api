@@ -9,8 +9,8 @@ export const deleteUserWithStatus = (reqUrl?: string): ResultWithStatus => {
     }
     const userIndex = users.findIndex((user) => user.id === reqId)
     if (userIndex > -1) {
-        users.splice(userIndex, userIndex)
-        return { status: 204, result: 'deleted'}
+        users.splice(userIndex, userIndex + 1)
+        return { status: 204, result: ''}
     }
-    return { status: 404, result: 'record with id === ' + reqId + ' doesn not exist'}
+    return { status: 404, result: 'record with id === ' + reqId + 'doesn not exist'}
 }

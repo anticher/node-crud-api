@@ -6,6 +6,8 @@ export const handleGet = (request: http.IncomingMessage, response: http.ServerRe
     switch (true) {
         case request.url === '/api/users':
             response.writeHead(200)
+            console.log(getAllUsers())
+            console.log(JSON.stringify(getAllUsers()))
             response.end(JSON.stringify(getAllUsers()))
             break
         case request.url?.startsWith('/api/users/'): {
@@ -16,7 +18,7 @@ export const handleGet = (request: http.IncomingMessage, response: http.ServerRe
         }
         default:
             response.writeHead(404)
-            response.end(JSON.stringify({ error: 'user doesn not exist' }))
+            response.end(JSON.stringify({ error: 'user does not exist' }))
             break
     }
 }
