@@ -1,6 +1,7 @@
 import * as http from 'http'
 import { handleGet } from '../get/handleGet'
 import { handlePost } from '../post/handlePost'
+import { handlePut } from '../put/handlePut'
 
 export const startServer = () => {
     const host = 'localhost'
@@ -15,6 +16,9 @@ export const startServer = () => {
                         break
                     case req.method === 'POST':
                         handlePost(req, res)
+                        break
+                    case req.method === 'PUT':
+                        handlePut(req, res)
                         break
                     default:
                         res.writeHead(404)
