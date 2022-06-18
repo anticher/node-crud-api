@@ -1,4 +1,5 @@
 import * as http from 'http'
+import { handleDelete } from '../delete/handleDelete'
 import { handleGet } from '../get/handleGet'
 import { handlePost } from '../post/handlePost'
 import { handlePut } from '../put/handlePut'
@@ -20,9 +21,12 @@ export const startServer = () => {
                     case req.method === 'PUT':
                         handlePut(req, res)
                         break
+                    case req.method === 'DELETE':
+                        handleDelete(req, res)
+                        break
                     default:
                         res.writeHead(404)
-                        res.end(JSON.stringify({ error: 'wrong path' }))
+                        res.end(JSON.stringify({ error: 'server does not support method ' +  req.method}))
                         break
                 }
             } else {
