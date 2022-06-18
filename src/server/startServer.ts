@@ -12,6 +12,7 @@ export const startServer = () => {
     const requestListener:
         http.RequestListener = (req: http.IncomingMessage, res: http.ServerResponse) => {
             res.setHeader('Content-Type', 'application/json')
+            res.setHeader('Process-id', process.pid)
             if (req.url?.startsWith('/api/users')) {
                 switch (true) {
                     case req.method === 'GET':
@@ -40,7 +41,7 @@ export const startServer = () => {
     const server = http.createServer(requestListener)
 
     server.listen(port, host, () => {
-        console.log(`Server is running on http://${host}:${port}`)
+        console.log(`Server is running on http://${host}:${port} with pid:${process.pid}`)
     })
 
     return server
