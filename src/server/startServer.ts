@@ -3,14 +3,15 @@ import { handleDelete } from '../delete/handleDelete'
 import { handleGet } from '../get/handleGet'
 import { handlePost } from '../post/handlePost'
 import { handlePut } from '../put/handlePut'
+import { config } from 'dotenv'
 
 export const startServer = () => {
+    config()
+    const port = Number(process.env.PORT) || 3000
     const host = 'localhost'
-    const port = 8000
-
     const requestListener:
         http.RequestListener = (req: http.IncomingMessage, res: http.ServerResponse) => {
-            if (req.url?.startsWith('/api/')) {
+            if (req.url?.startsWith('/api/users')) {
                 switch (true) {
                     case req.method === 'GET':
                         handleGet(req, res)
@@ -25,7 +26,7 @@ export const startServer = () => {
                         handleDelete(req, res)
                         break
                     default:
-                        res.writeHead(404)
+                        res.writeHead(501)
                         res.end(JSON.stringify({ error: 'server does not support method ' +  req.method}))
                         break
                 }
